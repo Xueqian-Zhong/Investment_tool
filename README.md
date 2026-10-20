@@ -28,7 +28,7 @@ npm run build
 npm start
 ```
 
-使用 React、Vinext、Vite 与 Cloudflare Workers。`build/`、`scripts/` 和 `vendor/` 包含必要的模板运行文件。`.openai/hosting.json` 仅含原 Sites 项目标识，不含凭证。上传 GitHub 不会自动部署原网站。本项目有服务端 API，不能直接作为纯静态 GitHub Pages 网站运行。
+使用 React、Vinext、Vite 与 Cloudflare Workers。`build/`、`scripts/` 和 `vendor/` 包含必要的模板运行文件。`.openai/hosting.json` 仅含原 Sites 项目标识，不含凭证。上传 GitHub 不会自动部署原网站。完整看盘界面已部署到 https://xueqian-zhong.github.io/Investment_tool/ 。GitHub Pages 托管 docs/ 静态界面，行情、新闻、财报接口继续由原 Sites 网站提供；服务端允许该 GitHub 来源的无凭证 GET 请求。修改 public/ 后运行 `node scripts/build-pages.mjs` 重新生成 docs/，推送 main 后自动发布。关注列表按网站来源保存在浏览器中，新网址不会自动继承旧网址的关注列表。
 
 ## 数据和回测
 

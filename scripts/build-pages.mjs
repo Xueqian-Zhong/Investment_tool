@@ -1,0 +1,11 @@
+import {cp,mkdir,readFile,writeFile} from 'node:fs/promises';
+const root=new URL('../',import.meta.url);
+const out=new URL('docs/',root);
+await mkdir(out,{recursive:true});
+await cp(new URL('public/',root),out,{recursive:true});
+let html=await readFile(new URL('public/dashboard.html',root),'utf8');
+html=html.replace('<title>','<meta name="stockscope-api-origin" content="https://stockscope-watch-20261020.airybear33.chatgpt.site"><title>').replace(/(src|href)="\/(?!\/)/g,'$1="./');
+await writeFile(new URL('index.html',out),html);
+await writeFile(new URL('dashboard.html',out),html);
+await writeFile(new URL('.nojekyll',out),'');
+console.log('GitHub Pages dashboard generated in docs/');
